@@ -2,6 +2,7 @@ package com;
 
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +14,8 @@ public class Project {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	@Column
 	private String name;
-	@ManyToMany (mappedBy = "projects") // if we didn't put mappedBy jpa will created duplicate table
+	@ManyToMany(mappedBy = "projects") // if we didn't put mappedBy jpa will created duplicate table
 	private Collection<Employee> employees;
 }

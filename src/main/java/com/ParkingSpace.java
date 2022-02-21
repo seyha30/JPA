@@ -14,7 +14,7 @@ public class ParkingSpace {
 	private long id;
 	private String location;
 	private int lot;
-	@OneToOne( mappedBy = "parkingSpace")
+	@OneToOne(mappedBy = "parkingSpace")
 	private Employee employee;
 	
 	

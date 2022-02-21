@@ -7,8 +7,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Classe {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
-	 private long id;
+	private long id;
 }

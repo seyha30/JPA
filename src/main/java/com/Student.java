@@ -2,6 +2,7 @@ package com;
 
 import java.util.Set;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,8 +18,10 @@ public class Student {
 	private String name;
 	@ManyToOne
 	private School school;
+	@ManyToMany
+	Set<Course> likedCourses;
 
-    @ManyToMany
-    Set<Course> likedCourses;
+	@Embedded
+	private RecordTracker recordTracker;
 
 }
