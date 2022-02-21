@@ -21,7 +21,7 @@ public class Student {
 	@ManyToMany
 	Set<Course> likedCourses;
 
-	@Embedded
-	private RecordTracker recordTracker;
+//	@Embedded
+//	private RecordTracker recordTracker;
 
 }
