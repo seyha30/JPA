@@ -12,8 +12,11 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import lombok.Data;
+
 @Embeddable
 @Access(AccessType.FIELD)
+@Data
 public class RecordTracker {
 
 	@Temporal(TemporalType.TIMESTAMP)
