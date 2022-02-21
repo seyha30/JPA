@@ -2,6 +2,7 @@ package com;
 
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -14,13 +15,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table
@@ -28,6 +29,7 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
+	@Column
 	private String name;
 	@Enumerated(EnumType.STRING) // if don't set enumType by default it take from 0-1-2-3
 	@Column(length = 10)
@@ -36,12 +38,15 @@ public class Employee {
 	private Calendar dob; // option 1 for set date type
 	@Temporal(TemporalType.DATE)
 	@Column(name = "s_date")
-	private java.util.Date startDate; // option 2 for set date type
+	private Date startDate; // option 2 for set date type
+	@Column
 	private long salary;
 	transient private String translateName;
+
 	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "PSPACE_ID")
 	private ParkingSpace parkingSpace;
-	
+
 	@ManyToMany
 	private Collection<Project> projects;
 
@@ -55,5 +60,10 @@ public class Employee {
 	@AttributeOverrides({ @AttributeOverride(name = "state", column = @Column(name = "province")),
 			@AttributeOverride(name = "zip", column = @Column(name = "POSTAL_CODE")) })
 	private Addresses addresses;
+	@ManyToOne
+	private Department department;
+
+//	@Embedded
+//	private RecordTracker recordTracker;
 
 }
