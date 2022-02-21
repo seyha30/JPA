@@ -41,7 +41,6 @@ public class Employee {
 	private Date startDate; // option 2 for set date type
 	@Column
 	private long salary;
-	transient private String translateName;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "PSPACE_ID")
@@ -50,11 +49,6 @@ public class Employee {
 	@ManyToMany
 	private Collection<Project> projects;
 
-//	private String state;
-//	private String street;
-//	private String city;
-//	private String zipCode;
-
 	@Embedded
 	// try this if you want to override column name of @Embeddable class's fields
 	@AttributeOverrides({ @AttributeOverride(name = "state", column = @Column(name = "province")),
@@ -62,8 +56,5 @@ public class Employee {
 	private Addresses addresses;
 	@ManyToOne
 	private Department department;
-
-//	@Embedded
-//	private RecordTracker recordTracker;
 
 }
