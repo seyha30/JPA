@@ -10,5 +10,10 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	private String code;
+	private String engName;
+	private String khName;
+	private String referentCode;
+	private String keyCode;
 
 }

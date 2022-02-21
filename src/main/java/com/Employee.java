@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,11 +30,13 @@ public class Employee {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "s_date")
 	private java.util.Date startDate; // option 2 for set date type
-
 	private long salary;
-
 	transient private String translateName;
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	private ParkingSpace parkingSpace;
+	private String state;
+	private String street;
+	private String city;
+	private String zipCode;
 
 }
