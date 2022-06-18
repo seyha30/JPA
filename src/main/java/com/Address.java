@@ -8,8 +8,6 @@ import javax.persistence.Id;
 @Entity
 public class Address {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
 	private String code;
 	private String engName;
 	private String khName;
